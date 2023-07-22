@@ -8,6 +8,7 @@ import io.appium.java_client.touch.offset.PointOption;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,6 +20,11 @@ public class ReusableMethods {
 
     public static void koordinatTiklama(int xKoordinat, int yKoordinat, int bekleme) throws InterruptedException {
         TouchAction touchAction = new TouchAction<>(Driver.getAndroidDriver());
+        touchAction.press(PointOption.point(xKoordinat, yKoordinat)).release().perform();
+        Thread.sleep(bekleme);
+    }
+    public static void browserKoordinatTiklama(int xKoordinat, int yKoordinat, int bekleme) throws InterruptedException {
+        TouchAction touchAction = new TouchAction<>(BrowserDriver.getBrowserDriver());
         touchAction.press(PointOption.point(xKoordinat, yKoordinat)).release().perform();
         Thread.sleep(bekleme);
     }
