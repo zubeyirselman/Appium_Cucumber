@@ -40,6 +40,12 @@ public class ReusableMethods {
         driver.findElementByXPath("//*[@text='" + elementText + "']").click();
     }
 
+    public static void scrollWithUiScrollableIsDisplayed(String elementText) {
+        AndroidDriver driver = (AndroidDriver)Driver.getAndroidDriver();
+        driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"" + elementText + "\"))");
+        driver.findElementByXPath("//*[@text='" + elementText + "']").isDisplayed();
+    }
+
     public static String getScreenshot(String name) throws IOException {
         // naming the screenshot with the current date to avoid duplication
         String date = new SimpleDateFormat("yyyyMMddhhssmm").format(new Date());
